@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Login Button 尺寸常量 -->
+    <dimen name="btn_login_corner_radius">24dp</dimen>
+
+    <!-- MiniPlayer 尺寸常量 -->
+    <dimen name="mini_player_height">64dp</dimen>
+    <dimen name="mini_player_album_size">48dp</dimen>
+    <dimen name="mini_player_album_radius">8dp</dimen>
+    <dimen name="mini_player_button_size">40dp</dimen>
+    <dimen name="mini_player_padding_horizontal">12dp</dimen>
+    <dimen name="mini_player_padding_vertical">8dp</dimen>
+    <dimen name="mini_player_text_margin">8dp</dimen>
+    <dimen name="mini_player_song_name_size">14sp</dimen>
+    <dimen name="mini_player_artist_name_size">12sp</dimen>
+    <dimen name="mini_player_time_size">12sp</dimen>
+
+    <!-- Emotion Slider 尺寸常量 -->
+    <dimen name="slider_emotion_height">48dp</dimen>
+    <dimen name="slider_emotion_margin_vertical">4dp</dimen>
+    <dimen name="slider_emotion_padding_horizontal">8dp</dimen>
+    <dimen name="slider_label_width">56dp</dimen>
+    <dimen name="slider_label_text_size">12sp</dimen>
+
+    <!-- MyListView 尺寸常量 -->
+    <dimen name="toolbar_icon_size">48dp</dimen>
+    <dimen name="page_title_size">20sp</dimen>
+    <dimen name="page_padding">16dp</dimen>
+    <dimen name="list_margin_top">12dp</dimen>
+</resources>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="View.UserSettingView">
+
+    <data>
+
+        <variable
+            name="usv"
+            type="ViewModel.UserSettingViewModel" />
+
+        <variable
+            name="userViewModel"
+            type="ViewModel.UserMainViewModel" />
+
+        <variable
+            name="miniPlayerViewModel"
+            type="ViewModel.MiniPlayerViewModel" />
+    </data>
+
+    <!-- 使用 CoordinatorLayout 以支持底部 MiniPlayer -->
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinator_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <!-- 主要內容區域 -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            android:paddingBottom="80dp">
+
+            <ImageButton
+                android:id="@+id/iv_user_image"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:contentDescription="@null"
+                app:profileImageUrl="@{userViewModel.profileImageUrl}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btn_user_page"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:drawablePadding="8dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="@string/btn_user_favorites"
+                android:textColor="?android:attr/textColorPrimary"
+                app:icon="@drawable/outline_bookmark_manager_24"
+                app:iconGravity="start"
+                app:iconTint="?android:attr/textColorPrimary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_user_image" />
+
+            <Button
+                android:id="@+id/btn_user_aboutAPP"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:drawablePadding="8dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="@string/btn_user_about_app"
+                android:textColor="?android:attr/textColorPrimary"
+                app:icon="@drawable/outline_smart_card_reader_24"
+                app:iconGravity="start"
+                app:iconTint="?android:attr/textColorPrimary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btn_user_page" />
+
+            <ImageButton
+                android:id="@+id/btn_user_logout"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_marginTop="90dp"
+                android:contentDescription="@null"
+                android:src="@drawable/outline_power_settings_circle_24"
+                app:tint="?android:attr/textColorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btn_user_aboutAPP" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- MiniPlayer -->
+        <include
+            android:id="@+id/mini_player"
+            layout="@layout/layout_mini_player"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:viewModel="@{miniPlayerViewModel}" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

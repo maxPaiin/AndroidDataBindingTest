@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Login Button Colors -->
+    <color name="color_login_accent">#EE82EE</color>
+    <color name="color_login_ripple">#80FFFFFF</color>
+
+    <!-- Emotion Slider Colors -->
+    <color name="color_emotion_happy">#FFFF19</color>
+    <color name="color_emotion_sad">#3030FF</color>
+    <color name="color_emotion_angry">#FF0004</color>
+    <color name="color_emotion_disgust">#30FF3A</color>
+    <color name="color_emotion_fear">#27594C</color>
+</resources>

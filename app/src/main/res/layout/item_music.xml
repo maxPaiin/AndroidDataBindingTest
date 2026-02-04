@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/mini_player_height"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardBackgroundColor="@color/black"
+    app:cardCornerRadius="0dp"
+    app:cardElevation="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="@dimen/mini_player_padding_horizontal"
+        android:paddingVertical="@dimen/mini_player_padding_vertical">
+
+        <!-- 專輯封面 -->
+        <ImageView
+            android:id="@+id/iv_album_cover"
+            android:layout_width="@dimen/mini_player_album_size"
+            android:layout_height="@dimen/mini_player_album_size"
+            android:contentDescription="@string/content_desc_album_cover"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_launcher_background" />
+
+        <!-- 歌曲名稱 -->
+        <TextView
+            android:id="@+id/tv_song_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/mini_player_text_margin"
+            android:layout_marginEnd="@dimen/mini_player_text_margin"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:singleLine="true"
+            android:textColor="@color/color_login_accent"
+            android:textSize="@dimen/mini_player_song_name_size"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/tv_artist_name"
+            app:layout_constraintEnd_toStartOf="@id/btn_like"
+            app:layout_constraintStart_toEndOf="@id/iv_album_cover"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="Song Name" />
+
+        <!-- 歌手名稱 -->
+        <TextView
+            android:id="@+id/tv_artist_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/mini_player_text_margin"
+            android:layout_marginEnd="@dimen/mini_player_text_margin"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="@color/color_login_ripple"
+            android:textSize="@dimen/mini_player_artist_name_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btn_like"
+            app:layout_constraintStart_toEndOf="@id/iv_album_cover"
+            app:layout_constraintTop_toBottomOf="@id/tv_song_name"
+            tools:text="Artist Name" />
+
+        <!-- 收藏按鈕 -->
+        <ImageButton
+            android:id="@+id/btn_like"
+            android:layout_width="@dimen/mini_player_button_size"
+            android:layout_height="@dimen/mini_player_button_size"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/content_desc_favorite"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_favorite"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_play_pause"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_favorite_filled" />
+
+
+        <ImageButton
+            android:id="@+id/btn_play_pause"
+            android:layout_width="@dimen/mini_player_button_size"
+            android:layout_height="@dimen/mini_player_button_size"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/btn_play_pause_desc"
+            android:src="@drawable/outline_play_arrow_24"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

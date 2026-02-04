@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(keytool -list:*)",
+      "Bash(tree:*)",
+      "Bash(find:*)",
+      "Bash(./gradlew assembleDebug:*)",
+      "Bash(grep:*)"
+    ]
+  }
+}

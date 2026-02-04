@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="View.UserMainActivity">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="userViewModel"
+            type="ViewModel.UserMainViewModel" />
+        <variable
+            name="musicViewModel"
+            type="ViewModel.MusicViewModel" />
+        <variable
+            name="miniPlayerViewModel"
+            type="ViewModel.MiniPlayerViewModel" />
+    </data>
+
+    <!-- 使用 CoordinatorLayout 以支持底部 MiniPlayer -->
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinator_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <!-- 主要內容區域 -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:paddingBottom="80dp">
+
+            <!-- 用戶頭像按鈕 -->
+            <ImageButton
+                android:id="@+id/btn_user_page"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:scaleType="centerCrop"
+                android:background="@android:color/transparent"
+                android:enabled="@{!musicViewModel.isDirectInputMode}"
+                app:profileImageUrl="@{userViewModel.profileImageUrl}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- 歡迎文字 -->
+            <TextView
+                android:id="@+id/tv_welcome"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="8dp"
+                android:text="@{userViewModel.welcomeMessage}"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toStartOf="@id/btn_user_page"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- 情緒輸入區域 - Slider 垂直排列 -->
+            <LinearLayout
+                android:id="@+id/layout_emotions"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="vertical"
+                android:visibility="@{(musicViewModel.hasPlaylist || musicViewModel.isDirectInputMode) ? View.GONE : View.VISIBLE}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btn_user_page">
+
+                <!-- Happy Slider -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/slider_emotion_height"
+                    android:layout_marginVertical="@dimen/slider_emotion_margin_vertical"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="@dimen/slider_label_width"
+                        android:layout_height="wrap_content"
+                        android:text="@string/emotion_happy"
+                        android:textSize="@dimen/slider_label_text_size" />
+
+                    <com.google.android.material.slider.Slider
+                        android:id="@+id/ed_feelings_happy"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:valueFrom="0"
+                        android:valueTo="100"
+                        android:stepSize="10"
+                        app:sliderValue="@={userViewModel.happyValue}"
+                        app:thumbColor="@color/color_emotion_happy"
+                        app:trackColorActive="@color/color_emotion_happy" />
+                </LinearLayout>
+
+                <!-- Sad Slider -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/slider_emotion_height"
+                    android:layout_marginVertical="@dimen/slider_emotion_margin_vertical"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="@dimen/slider_label_width"
+                        android:layout_height="wrap_content"
+                        android:text="@string/emotion_sad"
+                        android:textSize="@dimen/slider_label_text_size" />
+
+                    <com.google.android.material.slider.Slider
+                        android:id="@+id/ed_feelings_sad"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:valueFrom="0"
+                        android:valueTo="100"
+                        android:stepSize="10"
+                        app:sliderValue="@={userViewModel.sadValue}"
+                        app:thumbColor="@color/color_emotion_sad"
+                        app:trackColorActive="@color/color_emotion_sad" />
+                </LinearLayout>
+
+                <!-- Angry Slider -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/slider_emotion_height"
+                    android:layout_marginVertical="@dimen/slider_emotion_margin_vertical"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="@dimen/slider_label_width"
+                        android:layout_height="wrap_content"
+                        android:text="@string/emotion_angry"
+                        android:textSize="@dimen/slider_label_text_size" />
+
+                    <com.google.android.material.slider.Slider
+                        android:id="@+id/ed_feelings_angry"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:valueFrom="0"
+                        android:valueTo="100"
+                        android:stepSize="10"
+                        app:sliderValue="@={userViewModel.angryValue}"
+                        app:thumbColor="@color/color_emotion_angry"
+                        app:trackColorActive="@color/color_emotion_angry" />
+                </LinearLayout>
+
+                <!-- Disgust Slider -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/slider_emotion_height"
+                    android:layout_marginVertical="@dimen/slider_emotion_margin_vertical"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="@dimen/slider_label_width"
+                        android:layout_height="wrap_content"
+                        android:text="@string/emotion_disgust"
+                        android:textSize="@dimen/slider_label_text_size" />
+
+                    <com.google.android.material.slider.Slider
+                        android:id="@+id/ed_feelings_disgust"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:valueFrom="0"
+                        android:valueTo="100"
+                        android:stepSize="10"
+                        app:sliderValue="@={userViewModel.disgustValue}"
+                        app:thumbColor="@color/color_emotion_disgust"
+                        app:trackColorActive="@color/color_emotion_disgust" />
+                </LinearLayout>
+
+                <!-- Fear Slider -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/slider_emotion_height"
+                    android:layout_marginVertical="@dimen/slider_emotion_margin_vertical"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="@dimen/slider_label_width"
+                        android:layout_height="wrap_content"
+                        android:text="@string/emotion_fear"
+                        android:textSize="@dimen/slider_label_text_size" />
+
+                    <com.google.android.material.slider.Slider
+                        android:id="@+id/ed_feelings_fear"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:valueFrom="0"
+                        android:valueTo="100"
+                        android:stepSize="10"
+                        app:sliderValue="@={userViewModel.fearValue}"
+                        app:thumbColor="@color/color_emotion_fear"
+                        app:trackColorActive="@color/color_emotion_fear" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- 發送按鈕 -->
+            <Button
+                android:id="@+id/btn_send"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:enabled="@{!musicViewModel.isLoading &amp;&amp; !musicViewModel.isDirectInputMode}"
+                android:text="@string/btn_get_recommendations"
+                android:visibility="@{(musicViewModel.hasPlaylist || musicViewModel.isDirectInputMode) ? View.GONE : View.VISIBLE}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout_emotions" />
+
+
+
+            <!-- 遮罩層（直接輸入模式時禁用其他元素，覆蓋整個畫面）
+                 注意：必須在 til_direct_input 之前聲明，以確保輸入框顯示在遮罩之上 -->
+            <View
+                android:id="@+id/overlay_mask"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="#80000000"
+                android:clickable="true"
+                android:focusable="true"
+                android:visibility="@{musicViewModel.isDirectInputMode ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- 直接輸入區域（默認隱藏，直接輸入模式時顯示在畫面中央）
+     注意：必須在 overlay_mask 之後聲明，以確保顯示在遮罩之上 -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_direct_input"
+                style="@style/Widget.Material3.TextInputLayout.FilledBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:hint="@string/tell_me_your_feelings"
+                android:visibility="@{musicViewModel.isDirectInputMode ? View.VISIBLE : View.GONE}"
+                android:elevation="20dp"
+                app:counterEnabled="true"
+                app:counterMaxLength="20"
+                app:endIconDrawable="@android:drawable/ic_menu_send"
+                app:endIconMode="custom"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"> <!-- 確保垂直置中 -->
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ed_direct_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:maxLength="20" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- 音樂列表（獲取歌單後顯示，載入時禁用點擊） -->
+            <ListView
+                android:id="@+id/lv_musicList"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:divider="?android:attr/listDivider"
+                android:dividerHeight="1dp"
+                android:enabled="@{!musicViewModel.isLoading}"
+                android:visibility="@{musicViewModel.hasPlaylist ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toTopOf="@id/tv_list_status"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btn_user_page" />
+
+            <!-- 進度條（載入時顯示，置於列表上層） -->
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:elevation="4dp"
+                android:visibility="@{musicViewModel.isLoading ? View.VISIBLE : View.GONE}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <!-- 狀態文字（只在加載時顯示，置於列表上層） -->
+            <TextView
+                android:id="@+id/tv_status"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:elevation="4dp"
+                android:gravity="center"
+                android:text="@{musicViewModel.statusMessage}"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="14sp"
+                android:visibility="@{musicViewModel.isLoading ? View.VISIBLE : View.GONE}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/progress_bar" />
+
+            <!-- 列表狀態文字（獲取歌單後顯示） -->
+            <TextView
+                android:id="@+id/tv_list_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/list_feedback_question"
+                android:visibility="@{(musicViewModel.hasPlaylist &amp;&amp; !musicViewModel.isDirectInputMode) ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toTopOf="@id/layout_feedback_buttons"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <!-- 反饋按鈕區域（獲取歌單後顯示） -->
+            <LinearLayout
+                android:id="@+id/layout_feedback_buttons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="86dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:visibility="@{(musicViewModel.hasPlaylist &amp;&amp; !musicViewModel.isDirectInputMode) ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <Button
+                    android:id="@+id/btn_list_bad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:enabled="@{musicViewModel.isRefreshEnabled &amp;&amp; !musicViewModel.isLoading}"
+                    android:text="@string/btn_list_bad" />
+
+                <Button
+                    android:id="@+id/btn_list_good"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:enabled="@{!musicViewModel.isLoading}"
+                    android:text="@string/btn_list_good" />
+            </LinearLayout>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- MiniPlayer -->
+        <include
+            android:id="@+id/mini_player"
+            layout="@layout/layout_mini_player"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:viewModel="@{miniPlayerViewModel}" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

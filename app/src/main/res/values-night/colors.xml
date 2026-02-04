@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Login Button Colors (Dark Theme) -->
+    <!-- 深色主題下使用較亮的紫色以確保可見性 -->
+    <color name="color_login_accent">#66023C</color>
+    <color name="color_login_ripple">#66023C</color>
+
+    <!-- Emotion Slider Colors (Dark Theme) -->
+    <!-- 深色主題下使用相同的鮮豔顏色以確保可見性 -->
+    <color name="color_emotion_happy">#FFFF19</color>
+    <color name="color_emotion_sad">#5050FF</color>
+    <color name="color_emotion_angry">#FF4044</color>
+    <color name="color_emotion_disgust">#50FF5A</color>
+    <color name="color_emotion_fear">#3A8A7A</color>
+</resources>

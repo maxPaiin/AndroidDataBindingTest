@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Orpheus</string>
+    <string name="login_with_spotify_Button">使用 Spotify 登入</string>
+
+    <!-- Emotion Slider Labels -->
+    <string name="emotion_happy">快樂</string>
+    <string name="emotion_sad">悲傷</string>
+    <string name="emotion_angry">憤怒</string>
+    <string name="emotion_disgust">厭惡</string>
+    <string name="emotion_fear">恐懼</string>
+
+    <!-- UserMain UI Strings -->
+    <string name="btn_get_recommendations">取得音樂推薦</string>
+    <string name="list_feedback_question">你喜歡這份清單嗎？</string>
+    <string name="btn_list_bad">不喜歡</string>
+    <string name="btn_list_good">我喜歡</string>
+
+    <!-- UserSetting UI Strings -->
+    <string name="btn_user_favorites">收藏</string>
+    <string name="btn_user_about_app">關於此應用程式</string>
+
+    <!-- MyListView UI Strings -->
+    <string name="title_my_favorites">我的收藏</string>
+    <string name="content_desc_back">返回</string>
+    <string name="content_desc_calendar">選擇日期</string>
+    <string name="content_desc_user_profile">使用者圖片</string>
+    <string name="content_desc_favorite">收藏</string>
+    <string name="content_desc_album_cover">專輯封面</string>
+    <string name="content_desc_play">播放</string>
+    <string name="content_desc_pause">暫停</string>
+
+    <!-- PlayerView UI Strings -->
+    <string name="btn_play_pause_desc">播放/暫停</string>
+    <string name="content_desc_song_cover">專輯封面</string>
+
+    <!-- Direct Input Dialog -->
+    <string name="input_word">你想直接用文字描述你的感受嗎？</string>
+    <string name="tell_me_your_feelings">告訴我你的感受（20字）</string>
+    <string name="dialog_title_direct_input">要直接表達嗎？</string>
+    <string name="dialog_btn_yes">是</string>
+    <string name="dialog_btn_no">否</string>
+
+    <!-- Toast Messages -->
+    <string name="toast_connecting_spotify">正在連線 Spotify…</string>
+    <string name="toast_connected_spotify">已連線 Spotify</string>
+    <string name="toast_cannot_play_music">無法播放此音樂</string>
+    <string name="toast_no_playlist_data">沒有播放清單資料</string>
+    <string name="toast_please_wait_seconds">請等待 %1$d 秒後再試</string>
+    <string name="toast_thank_you">謝謝</string>
+    <string name="toast_input_your_feeling">請輸入你的感受</string>
+    <string name="toast_no_songs_playing">沒有正在播放的音樂</string>
+    <string name="toast_shown_all_favorites">已顯示所有收藏</string>
+    <string name="toast_screening_date">篩選日期：%1$s</string>
+    <string name="toast_no_song_data">沒有歌曲資料</string>
+    <string name="toast_opening_spotify_auth">正在開啟Spotify應用程式以進行授權</string>
+    <string name="toast_removed_from_favorites">已從收藏中移除</string>
+    <string name="toast_added_to_favorites">已加入收藏</string>
+    <string name="toast_playlist_only_one_song">播放清單只有一首歌</string>
+    <string name="toast_spotify_not_connected">尚未連線 Spotify</string>
+    <string name="toast_spotify_free_cannot_play_on_demand">Spotify免費用戶無法點播指定歌曲，請升級Premium</string>
+
+    <!-- Status Messages -->
+    <string name="status_connecting_spotify">正在連線 Spotify…</string>
+    <string name="status_connected">已連線</string>
+    <string name="status_connected_spotify">已連線 Spotify</string>
+    <string name="status_analyzing_emotions">正在分析你的情緒…</string>
+    <string name="status_analyzing_emotions_zh">正在分析您的情緒…</string>
+    <string name="status_found_music">找到 %1$d 首音樂</string>
+    <string name="status_found_music_zh">找到 %1$d 首音樂</string>
+    <string name="status_request_limit_reached">已達到請求上限。</string>
+    <string name="status_failed_to_get_recommendations">無法取得推薦內容</string>
+    <string name="status_failed_to_get_recommendations_zh">無法取得推薦內容</string>
+
+    <!-- Error Messages -->
+    <string name="error_invalid_emotion_input">請輸入有效的情緒指數（0–100）</string>
+    <string name="error_please_login_spotify">請註冊/登入 Spotify</string>
+    <string name="error_please_input_feeling">請輸入你的感受</string>
+    <string name="error_spotify_free_cannot_play">Spotify 免費用戶無法點播指定歌曲</string>
+    <string name="error_seek_restricted">Spotify 免費用戶無法使用快轉與倒轉功能。</string>
+    <string name="error_cannot_play_music">無法播放音樂</string>
+
+    <!-- Login Status -->
+    <string name="login_status_no_login">未登入</string>
+    <string name="login_status_login">登入</string>
+    <string name="login_status_processing">正在處理授權…</string>
+    <string name="login_status_getting_token">正在取得權杖</string>
+    <string name="login_status_failed_invalid_callback">授權失敗：回呼無效</string>
+    <string name="login_status_failed_no_code">授權失敗：沒有授權碼</string>
+    <string name="login_status_failed_user_info">無法取得使用者資訊</string>
+    <string name="login_status_success">登入成功\n歡迎，%1$s</string>
+    <string name="login_status_error">登入錯誤</string>
+    <string name="login_status_error_with_msg">登入錯誤：%1$s</string>
+    <string name="login_status_cancelled">已取消登入</string>
+    <string name="login_status_auth_failed">授權失敗：%1$s</string>
+
+    <!-- Welcome Message -->
+    <string name="welcome_message">歡迎：%1$s</string>
+    <string name="welcome_message_default">歡迎：</string>
+    <string name="default_username">使用者</string>
+
+    <!-- Player -->
+    <string name="player_play">播放</string>
+    <string name="player_pause">暫停</string>
+    <string name="player_time_zero">0:00</string>
+    <string name="player_heart_filled">♥</string>
+    <string name="player_heart_empty">♡</string>
+
+    <!-- About App -->
+    <string name="about_app_message">採用MVVM設計模式與data binding的應用程式</string>
+
+    <!-- Empty State -->
+    <string name="empty_no_songs_for_date">該日期沒有已儲存的歌曲</string>
+
+    <!-- Default Text -->
+    <string name="text_unknown_song">未知歌曲</string>
+    <string name="text_unknown_artist">未知歌手</string>
+
+    <!-- MiniPlayer Content Descriptions -->
+    <string name="content_desc_mini_album_cover">專輯封面</string>
+    <string name="content_desc_mini_favorite">收藏</string>
+    <string name="content_desc_mini_play_pause">播放/暫停</string>
+
+</resources>

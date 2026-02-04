@@ -1,0 +1,105 @@
+plugins {
+    alias(libs.plugins.android.application)
+}
+
+android {
+    namespace 'com.example.graduationproject'
+    compileSdk {
+        version = release(36)
+    }
+    buildFeatures{
+        buildConfig true
+        viewBinding true
+        dataBinding true
+    }
+
+    defaultConfig {
+        applicationId "com.example.graduationproject"
+        minSdk 29
+        targetSdk 36
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // Spotify Redirect URI - 與測試代碼相同，只使用單一 URI
+        def spotifyScheme = "myapp"
+        def spotifyHost = "callback"
+
+        manifestPlaceholders = [
+                appAuthRedirectScheme: spotifyScheme,
+                spotifyHost: spotifyHost,
+                redirectSchemeName: spotifyScheme,
+                redirectHostName: spotifyHost
+        ]
+
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file("local.properties").newDataInputStream())
+        //gemini web api
+        String apiKey = properties.getProperty("GEMINI_API_KEY")
+        buildConfigField "String", "GEMINI_API_KEY", "\"${apiKey}\""
+
+        //spotify web api
+        String spotifyClientId = properties.getProperty("SPOTIFY_CLIENT_ID")
+        buildConfigField "String", "SPOTIFY_CLIENT_ID", "\"${spotifyClientId}\""
+        String spotifyClientSecret = properties.getProperty("SPOTIFY_CLIENT_SECRET")
+        buildConfigField "String", "SPOTIFY_CLIENT_SECRET", "\"${spotifyClientSecret}\""
+
+        // 統一的 Redirect URI - Web API 和 App Remote SDK 共用
+        buildConfigField "String", "SPOTIFY_REDIRECT_URI", "\"${spotifyScheme}://${spotifyHost}\""
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_21
+        targetCompatibility JavaVersion.VERSION_21
+    }
+}
+
+dependencies {
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.activity
+    implementation libs.constraintlayout
+    implementation libs.ads.mobile.sdk
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+
+    //Other dependencies
+    implementation libs.okhttp
+    implementation libs.logging.interceptor
+    implementation libs.gson
+    implementation libs.material
+    implementation libs.lifecycle.viewmodel
+    implementation libs.lifecycle.livedata
+    implementation libs.browser
+    implementation libs.lifecycle.runtime
+
+    implementation libs.retrofit
+    implementation libs.converter.gson
+    implementation libs.appauth
+    implementation 'androidx.activity:activity:1.12.1'
+
+    compileOnly libs.projectlombok.lombok
+    annotationProcessor libs.projectlombok.lombok
+
+    // Glide for image loading
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.16.0'
+
+    //Spotify Android SDK input
+    implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+    implementation 'com.spotify.android:auth:2.1.1'
+
+    //frontend framework
+    implementation 'com.google.android.material:material:1.11.0'
+
+    //sqlite room
+    implementation "androidx.room:room-runtime:2.8.4"
+    annotationProcessor "androidx.room:room-compiler:2.8.4"
+}

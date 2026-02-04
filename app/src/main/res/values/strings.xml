@@ -1,0 +1,122 @@
+<resources>
+    <string name="app_name">Orpheus</string>
+    <string name="login_with_spotify_Button">Login with Spotify</string>
+
+    <!-- Emotion Slider Labels -->
+    <string name="emotion_happy">Happy</string>
+    <string name="emotion_sad">Sad</string>
+    <string name="emotion_angry">Angry</string>
+    <string name="emotion_disgust">Disgust</string>
+    <string name="emotion_fear">Fear</string>
+
+    <!-- UserMain UI Strings -->
+    <string name="btn_get_recommendations">Get Music Recommendations</string>
+    <string name="list_feedback_question">Did you like this list?</string>
+    <string name="btn_list_bad">not good</string>
+    <string name="btn_list_good">I like it</string>
+
+    <!-- UserSetting UI Strings -->
+    <string name="btn_user_favorites">Favorites</string>
+    <string name="btn_user_about_app">about this app</string>
+
+    <!-- MyListView UI Strings -->
+    <string name="title_my_favorites">My Favorites</string>
+    <string name="content_desc_back">return</string>
+    <string name="content_desc_calendar">Select date</string>
+    <string name="content_desc_user_profile">user image</string>
+    <string name="content_desc_favorite">Favorites</string>
+    <string name="content_desc_album_cover">album cover</string>
+    <string name="content_desc_play">play</string>
+    <string name="content_desc_pause">pause</string>
+
+    <!-- PlayerView UI Strings -->
+    <string name="btn_play_pause_desc">play/pause</string>
+    <string name="content_desc_song_cover">album cover</string>
+
+    <!-- Direct Input Dialog -->
+    <string name="input_word">Would you want to describe your feelings directly in words</string>
+    <string name="tell_me_your_feelings">Tell me your feelings (20 words)</string>
+    <string name="dialog_title_direct_input">Should I be direct?</string>
+    <string name="dialog_btn_yes">yes</string>
+    <string name="dialog_btn_no">no</string>
+
+    <!-- Toast Messages -->
+    <string name="toast_connecting_spotify">Connecting Spotify…</string>
+    <string name="toast_connected_spotify">Connected Spotify</string>
+    <string name="toast_cannot_play_music">can\'t play this music</string>
+    <string name="toast_no_playlist_data">No playlist data</string>
+    <string name="toast_please_wait_seconds">Wait %1$d s try again</string>
+    <string name="toast_thank_you">Thank you</string>
+    <string name="toast_input_your_feeling">Please enter your feelings</string>
+    <string name="toast_no_songs_playing">No music playing</string>
+    <string name="toast_shown_all_favorites">All favorites shown</string>
+    <string name="toast_screening_date">Screening: %1$s</string>
+    <string name="toast_no_song_data">No song data</string>
+    <string name="toast_opening_spotify_auth">Opening the Spotify app for authorization</string>
+    <string name="toast_removed_from_favorites">Collection removed</string>
+    <string name="toast_added_to_favorites">Added to favorites</string>
+    <string name="toast_playlist_only_one_song">Playlist only has one song</string>
+    <string name="toast_spotify_not_connected">Spotify not connected</string>
+    <string name="toast_spotify_free_cannot_play_on_demand">Spotify Free users cannot request specific songs, please upgrade to Premium</string>
+
+    <!-- Status Messages -->
+    <string name="status_connecting_spotify">Connecting Spotify…</string>
+    <string name="status_connected">Connected</string>
+    <string name="status_connected_spotify">Connected Spotify</string>
+    <string name="status_analyzing_emotions">Analyzing your emotions…</string>
+    <string name="status_analyzing_emotions_zh">正在分析您的情緒…</string>
+    <string name="status_found_music">find %1$d music</string>
+    <string name="status_found_music_zh">find %1$d musics</string>
+    <string name="status_request_limit_reached">The request has reached its limit.</string>
+    <string name="status_failed_to_get_recommendations">Failed to retrieve recommendations</string>
+    <string name="status_failed_to_get_recommendations_zh">Failed to get recommendations</string>
+
+    <!-- Error Messages -->
+    <string name="error_invalid_emotion_input">Please enter a valid sentiment index (0–100)</string>
+    <string name="error_please_login_spotify">Subscriber Registration Spotify</string>
+    <string name="error_please_input_feeling">Please enter your feelings</string>
+    <string name="error_spotify_free_cannot_play">Spotify Free users cannot request specific song</string>
+    <string name="error_seek_restricted">Spotify Free user cannot use the fast-forward and rewind functions.</string>
+    <string name="error_cannot_play_music">can\'t play music</string>
+
+    <!-- Login Status -->
+    <string name="login_status_no_login">no login</string>
+    <string name="login_status_login">login</string>
+    <string name="login_status_processing">processing authorization…</string>
+    <string name="login_status_getting_token">taking message</string>
+    <string name="login_status_failed_invalid_callback">Authorization failed: Invalid callback</string>
+    <string name="login_status_failed_no_code">Authorization failed: No authorization code</string>
+    <string name="login_status_failed_user_info">Failed to obtain user information</string>
+    <string name="login_status_success">login success\nwelcome, %1$s</string>
+    <string name="login_status_error">login error</string>
+    <string name="login_status_error_with_msg">login error: %1$s</string>
+    <string name="login_status_cancelled">login cancelled</string>
+    <string name="login_status_auth_failed">Authorization failed: %1$s</string>
+
+    <!-- Welcome Message -->
+    <string name="welcome_message">welcome: %1$s</string>
+    <string name="welcome_message_default">welcome:</string>
+    <string name="default_username">user</string>
+
+    <!-- Player -->
+    <string name="player_play">play</string>
+    <string name="player_pause">pause</string>
+    <string name="player_time_zero">0:00</string>
+    <string name="player_heart_filled">♥</string>
+    <string name="player_heart_empty">♡</string>
+
+    <!-- About App -->
+    <string name="about_app_message">MVVM design pattern and data binding app</string>
+
+    <!-- Empty State -->
+    <string name="empty_no_songs_for_date">No musics saved for that date</string>
+
+    <!-- Default Text -->
+    <string name="text_unknown_song">Unknown Music</string>
+    <string name="text_unknown_artist">Unknown Artist</string>
+
+    <!-- MiniPlayer Content Descriptions -->
+    <string name="content_desc_mini_album_cover">Album Cover</string>
+    <string name="content_desc_mini_favorite">Favorite</string>
+    <string name="content_desc_mini_play_pause">Play/Pause</string>
+</resources>

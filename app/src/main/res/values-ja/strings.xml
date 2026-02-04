@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Orpheus</string>
+    <string name="login_with_spotify_Button">Spotifyでログイン</string>
+
+    <!-- Emotion Slider Labels -->
+    <string name="emotion_happy">嬉しい</string>
+    <string name="emotion_sad">悲しい</string>
+    <string name="emotion_angry">怒り</string>
+    <string name="emotion_disgust">嫌悪</string>
+    <string name="emotion_fear">恐れ</string>
+
+    <!-- UserMain UI Strings -->
+    <string name="btn_get_recommendations">音楽のおすすめを取得</string>
+    <string name="list_feedback_question">このリストは気に入りましたか？</string>
+    <string name="btn_list_bad">いまいち</string>
+    <string name="btn_list_good">気に入った</string>
+
+    <!-- UserSetting UI Strings -->
+    <string name="btn_user_favorites">お気に入り</string>
+    <string name="btn_user_about_app">このアプリについて</string>
+
+    <!-- MyListView UI Strings -->
+    <string name="title_my_favorites">お気に入り</string>
+    <string name="content_desc_back">戻る</string>
+    <string name="content_desc_calendar">日付を選択</string>
+    <string name="content_desc_user_profile">ユーザー画像</string>
+    <string name="content_desc_favorite">お気に入り</string>
+    <string name="content_desc_album_cover">アルバムカバー</string>
+    <string name="content_desc_play">再生</string>
+    <string name="content_desc_pause">一時停止</string>
+
+    <!-- PlayerView UI Strings -->
+    <string name="btn_play_pause_desc">再生/一時停止</string>
+    <string name="content_desc_song_cover">アルバムカバー</string>
+
+    <!-- Direct Input Dialog -->
+    <string name="input_word">気持ちを言葉で直接表現しますか？</string>
+    <string name="tell_me_your_feelings">気持ちを教えてください（20字）</string>
+    <string name="dialog_title_direct_input">直接入力しますか？</string>
+    <string name="dialog_btn_yes">はい</string>
+    <string name="dialog_btn_no">いいえ</string>
+
+    <!-- Toast Messages -->
+    <string name="toast_connecting_spotify">Spotifyに接続中…</string>
+    <string name="toast_connected_spotify">Spotifyに接続しました</string>
+    <string name="toast_cannot_play_music">この音楽は再生できません</string>
+    <string name="toast_no_playlist_data">プレイリストのデータがありません</string>
+    <string name="toast_please_wait_seconds">あと%1$d秒待ってからもう一度お試しください</string>
+    <string name="toast_thank_you">ありがとうございます</string>
+    <string name="toast_input_your_feeling">気持ちを入力してください</string>
+    <string name="toast_no_songs_playing">再生中の音楽がありません</string>
+    <string name="toast_shown_all_favorites">お気に入りをすべて表示しました</string>
+    <string name="toast_screening_date">スクリーニング：%1$s</string>
+    <string name="toast_no_song_data">曲データがありません</string>
+    <string name="toast_opening_spotify_auth">認証のためSpotifyアプリを開いています</string>
+    <string name="toast_removed_from_favorites">コレクションを削除しました</string>
+    <string name="toast_added_to_favorites">お気に入りに追加しました</string>
+    <string name="toast_playlist_only_one_song">プレイリストには1曲しかありません</string>
+    <string name="toast_spotify_not_connected">Spotifyに接続されていません</string>
+    <string name="toast_spotify_free_cannot_play_on_demand">Spotify無料ユーザーは特定の曲をリクエストできません。</string>
+
+    <!-- Status Messages -->
+    <string name="status_connecting_spotify">Spotifyに接続中…</string>
+    <string name="status_connected">接続済み</string>
+    <string name="status_connected_spotify">Spotifyに接続しました</string>
+    <string name="status_analyzing_emotions">感情を分析中…</string>
+    <string name="status_analyzing_emotions_zh">感情を分析中…</string>
+    <string name="status_found_music">%1$d件の音楽が見つかりました</string>
+    <string name="status_found_music_zh">%1$d件の音楽が見つかりました</string>
+    <string name="status_request_limit_reached">リクエスト上限に達しました。</string>
+    <string name="status_failed_to_get_recommendations">おすすめの取得に失敗しました</string>
+    <string name="status_failed_to_get_recommendations_zh">おすすめの取得に失敗しました</string>
+
+    <!-- Error Messages -->
+    <string name="error_invalid_emotion_input">有効な感情指数（0〜100）を入力してください</string>
+    <string name="error_please_login_spotify">Spotifyのサブスク登録が必要です</string>
+    <string name="error_please_input_feeling">気持ちを入力してください</string>
+    <string name="error_spotify_free_cannot_play">Spotify無料ユーザーは特定の曲をリクエストできません</string>
+    <string name="error_seek_restricted">Spotify無料ユーザーは早送り・巻き戻し機能を使用できません。</string>
+    <string name="error_cannot_play_music">音楽を再生できません</string>
+
+    <!-- Login Status -->
+    <string name="login_status_no_login">未ログイン</string>
+    <string name="login_status_login">ログイン</string>
+    <string name="login_status_processing">認証を処理中…</string>
+    <string name="login_status_getting_token">トークン取得中</string>
+    <string name="login_status_failed_invalid_callback">認証に失敗しました：無効なコールバック</string>
+    <string name="login_status_failed_no_code">認証に失敗しました：認可コードがありません</string>
+    <string name="login_status_failed_user_info">ユーザー情報の取得に失敗しました</string>
+    <string name="login_status_success">ログイン成功\nようこそ、%1$s</string>
+    <string name="login_status_error">ログインエラー</string>
+    <string name="login_status_error_with_msg">ログインエラー：%1$s</string>
+    <string name="login_status_cancelled">ログインをキャンセルしました</string>
+    <string name="login_status_auth_failed">認証に失敗しました：%1$s</string>
+
+    <!-- Welcome Message -->
+    <string name="welcome_message">ようこそ：%1$s</string>
+    <string name="welcome_message_default">ようこそ：</string>
+    <string name="default_username">ユーザー</string>
+
+    <!-- Player -->
+    <string name="player_play">再生</string>
+    <string name="player_pause">一時停止</string>
+    <string name="player_time_zero">0:00</string>
+    <string name="player_heart_filled">♥</string>
+    <string name="player_heart_empty">♡</string>
+
+    <!-- About App -->
+    <string name="about_app_message">MVVM design pattern and data binding app</string>
+
+    <!-- Empty State -->
+    <string name="empty_no_songs_for_date">その日付に保存された曲はありません</string>
+
+    <!-- Default Text -->
+    <string name="text_unknown_song">不明な曲</string>
+    <string name="text_unknown_artist">不明なアーティスト</string>
+
+    <!-- MiniPlayer Content Descriptions -->
+    <string name="content_desc_mini_album_cover">アルバムカバー</string>
+    <string name="content_desc_mini_favorite">お気に入り</string>
+    <string name="content_desc_mini_play_pause">再生/一時停止</string>
+</resources>

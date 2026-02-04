@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="View.PlayerView">
+
+   <data>
+       <variable
+           name="pvm"
+           type="ViewModel.PlayerViewModel"/>
+   </data>
+
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="15dp"
+        android:padding="16dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="#121212">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <!--歌曲收藏-->
+            <Button
+                android:id="@+id/btn_like"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                tools:text="♥"
+                style="?android:attr/buttonBarButtonStyle"/>
+
+            <!--歌曲封面 -->
+            <ImageView
+                android:id="@+id/iv_album_cover"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:scaleType="centerCrop"
+                android:background="#282828"
+                android:src="@drawable/ic_launcher_background"
+                android:contentDescription="@string/content_desc_song_cover" />
+
+            <!-- 歌曲名稱 -->
+            <TextView
+                android:id="@+id/tv_track_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{pvm.currentTrack.songName, default=`---`}"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginTop="24dp"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:gravity="center"
+                tools:text="歌曲名稱" />
+
+            <!-- 藝術家名稱 -->
+            <TextView
+                android:id="@+id/tv_artist_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{pvm.currentTrack.artistName, default=`---`}"
+                android:textColor="#B3B3B3"
+                android:textSize="16sp"
+                android:layout_marginTop="8dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                tools:text="藝術家" />
+
+            <!-- 進度條區域 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="24dp"
+                android:paddingHorizontal="8dp">
+
+                <!-- SeekBar 進度條 -->
+                <SeekBar
+                    android:id="@+id/seek_bar_progress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="100"
+                    android:progress="0"
+                    android:progressTint="#1DB954"
+                    android:thumbTint="#1DB954"
+                    android:progressBackgroundTint="#535353" />
+
+                <!-- 時間顯示區域 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="4dp">
+
+                    <!-- 當前播放時間 -->
+                    <TextView
+                        android:id="@+id/tv_current_time"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@{pvm.currentTimeFormatted, default=`0:00`}"
+                        android:textColor="#B3B3B3"
+                        android:textSize="12sp"
+                        android:gravity="start"
+                        tools:text="1:23" />
+
+                    <!-- 歌曲時長倒計時（居中顯示剩餘時間） -->
+<!--                    <TextView-->
+<!--                        android:id="@+id/tv_song_time"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="@{pvm.remainingTime, default=`0:00`}"-->
+<!--                        android:textColor="#1DB954"-->
+<!--                        android:textSize="14sp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        tools:text="2:22" />-->
+
+                    <!-- 總時長 -->
+                    <TextView
+                        android:id="@+id/tv_total_time"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@{pvm.totalTimeFormatted, default=`0:00`}"
+                        android:textColor="#B3B3B3"
+                        android:textSize="12sp"
+                        android:gravity="end"
+                        tools:text="3:45" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp">
+
+            <!-- 上一首按鈕（需要 Spotify 已連接且播放列表有多首歌曲） -->
+            <ImageButton
+                android:id="@+id/btn_previous"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/outline_skip_previous_24"
+                android:textSize="12sp"
+                android:backgroundTint="#1DB954"
+                android:layout_marginEnd="16dp"
+                android:enabled="@{pvm.controlsEnabled &amp;&amp; pvm.canNavigate, default=false}" />
+
+            <!-- 播放/暫停按鈕 -->
+            <ImageButton
+                android:id="@+id/btn_play_pause"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:contentDescription="@string/btn_play_pause_desc"
+                android:scaleType="centerInside"
+                android:backgroundTint="#1DB954"
+                app:playPauseIconWithBg="@{pvm.isPlaying}"
+                android:enabled="@{pvm.controlsEnabled, default=false}" />
+
+            <!-- 下一首按鈕（需要 Spotify 已連接且播放列表有多首歌曲） -->
+            <ImageButton
+                android:id="@+id/btn_next"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/outline_skip_next_24"
+                android:textSize="12sp"
+                android:backgroundTint="#1DB954"
+                android:layout_marginStart="16dp"
+                android:enabled="@{pvm.controlsEnabled &amp;&amp; pvm.canNavigate, default=false}" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- Android 11+ 需要聲明要查詢的包 -->
+    <queries>
+        <!-- Spotify App 包名 -->
+        <package android:name="com.spotify.music" />
+    </queries>
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/app_logo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/app_logo"
+        android:supportsRtl="true"
+        android:theme="@style/Base.Theme.GraduationProject">
+        <activity
+            android:name="View.MyListView"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name="View.UserSettingView"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name="View.PlayerView"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <!--
+            Spotify App Remote 使用 showAuthView(true) 會在 Spotify App 內完成授權
+            不需要額外的 intent-filter
+        -->
+        <activity
+            android:name="View.UserMainActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <!--
+            MainActivity: 登錄頁面 (啟動器入口)
+            同時處理 AppAuth 的 Web API 登錄回調
+            使用 singleTop 避免創建多個實例
+        -->
+        <activity
+            android:name="View.MainActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <!-- AppAuth Web API 登錄回調 - 唯一的 intent-filter -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="${spotifyHost}"
+                    android:scheme="${appAuthRedirectScheme}" />
+            </intent-filter>
+        </activity>
+        <!--移除第三方庫註冊的 RedirectUriReceiverActivity，避免多個 Activity 搶同一個 redirect URI -->
+        <activity
+            android:name="net.openid.appauth.RedirectUriReceiverActivity"
+            tools:node="remove" />
+        <activity
+            android:name="com.spotify.sdk.android.auth.browser.RedirectUriReceiverActivity"
+            tools:node="remove" />
+    </application>
+
+</manifest>
